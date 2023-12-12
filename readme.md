@@ -6,17 +6,17 @@
 
 ## 1. Prerequisits:
 
-Retrieves configuration values like apikey, org, app, url of dast api, and testConf with include test suites to include and exlude.
+Need configuration values like apikey, org, app, url of dast api, and testConf with include test suites to include and exlude.
 
 ## 2. Dast Test Initiation:
 
-* Sends a POST request to the Dast API initiate Dast Test
+* Sends a POST request to the Dast API initiate Dast Test with all the reqired test test suites and other configurations.
 * The Dast API initiates the Dast test based on the provided configuration.
 
 ## 3. Dast Test Monitoring:
 
-* Utilizes the check dast status api to retrieve the status of the Dast test.
-* Polls the API at regular intervals until the test finishes.
+* Use the check dast status api to retrieve the status of the Dast test.
+* Poll the API at regular intervals until the test finishes.
 
 ## 4. Report Download and Artifact Creation:
 
