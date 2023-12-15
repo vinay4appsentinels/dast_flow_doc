@@ -1,9 +1,7 @@
 
 
 # Dast test flow
-
 ![image](./flow.png)
-
 ## 1. Prerequisits:
 
 Need configuration values like apikey, org, app, url of dast api, and testConf with include test suites to include and exlude.
@@ -11,12 +9,17 @@ Need configuration values like apikey, org, app, url of dast api, and testConf w
 ## 2. Dast Test Initiation:
 
 * Sends a POST request to the Dast API initiate Dast Test with all the reqired test test suites and other configurations.
+
 * The Dast API initiates the Dast test based on the provided configuration.
 
 ## 3. Dast Test Monitoring:
 
 * Use the check dast status api to retrieve the status of the Dast test.
 * Poll the API at regular intervals until the test finishes.
+
+## 4. Dast Start Report preperation
+* Initiate the report preperation
+* Check the status of report preperation
 
 ## 4. Report Download and Artifact Creation:
 
@@ -41,7 +44,7 @@ This API allows you to initiate a Dast test via the AppSentinels REST API.
 
 ```
 {
-  "test_initiater": "API", // mandatory
+ "test_initiater": "API", // optional
   "name": "My Dast Test", // mandatory
   "target_url": "https://example.com", // mandatory
   "test_suites": ["api-testing"], // optional
@@ -54,8 +57,8 @@ This API allows you to initiate a Dast test via the AppSentinels REST API.
 ```
 
 **Headers:**
-
-* Authorization: Your AppSentinels API key prefixed with "AppSentinels "
+* apikey: Your API key
+* x-user-key: Your user key
 * Content-Type: application/json
 
 **Response (JSON):**
@@ -87,7 +90,8 @@ This API allows you to initiate a Dast test via the AppSentinels REST API.
 
 **Headers:**
 
-* **Authorization:** String (required). Your AppSentinels API key prefixed with "AppSentinels ".
+* **apikey**: Your API key
+* **x-user-key**: Your user key
 * **Content-Type:** String (optional). Defaults to "application/json".
 
 **Response:**
@@ -114,7 +118,26 @@ This API allows you to initiate a Dast test via the AppSentinels REST API.
 * The response contains details like start time, end time (if finished), status, executed test cases, identified issues, and other information.
 
 
+## Dast Report Start
+**Method** POST
 
+**URL:** `/api/v1/{org}/{application_id}/tests/{test_id}/reports`
+
+**Parameters:**
+
+* **application_id:** String (required) - The ID of the application containing the Dast test.
+* **test_id:** String (required) - The ID of the Dast test to check the report availability for.
+* **org:** String (required) - The ID of the organization containing the application.
+
+**Headers:**
+* apikey: Your API key
+* x-user-key: Your user key
+* Content-Type: application/json
+
+**Request Body (JSON):**
+```json
+{}
+```
 
 ## Dast Report Availability
 
@@ -130,7 +153,8 @@ This API allows you to initiate a Dast test via the AppSentinels REST API.
 
 **Headers:**
 
-* **Authorization:** String (required) - Your AppSentinels API key prefixed with "AppSentinels ".
+* **apikey**: Your API key
+* **x-user-key**: Your user key
 * **Content-Type:** String (optional) - Defaults to "application/json".
 
 **Response (JSON):**
