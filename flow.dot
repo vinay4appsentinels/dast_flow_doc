@@ -1,0 +1,27 @@
+digraph DAST_Process {
+    rankdir=TB; // Left to Right direction
+
+    // Nodes
+    node [shape=box];
+
+    Prerequisites [label="Prerequisites\nKeys, Testsuites indentifiction"];
+    DASTTestInitiation [label="DAST Test Initiation"];
+    TestComplete [shape=diamond label="Check\nTest complete?"];
+    // DASTTestMonitoring [label="3. DAST Test\nMonitoring\nCheck DAST Status API"];
+    ReportPreparation [label="DAST Start\nInitiate Report Preparation"];
+    ReportComplete [shape=diamond label="Check\nReport status"];
+    ReportDownload [label="Download DAST Reports"];
+    Done [label="Done"];
+    
+    // Edges
+    Prerequisites -> DASTTestInitiation;
+    DASTTestInitiation -> TestComplete;
+    TestComplete -> TestComplete [label="No"];
+    TestComplete -> ReportPreparation [label="Yes"];
+    ReportPreparation->ReportComplete
+    // DASTTestMonitoring -> ReportPreparation;
+    // ReportPreparation -> ReportComplete
+    ReportComplete->ReportComplete [label="No"];
+    ReportComplete->ReportDownload [label="Yes"];
+    ReportDownload->Done 
+}
