@@ -4,11 +4,11 @@ digraph DAST_Process {
     // Nodes
     node [shape=box];
 
-    Prerequisites [label="Prerequisites\nKeys, Testsuites indentifiction"];
+    Prerequisites [label="Prerequisites\nKeys, Test suites indentifiction"];
     DASTTestInitiation [label="DAST Test Initiation"];
     TestComplete [shape=diamond label="Check\nTest complete?"];
     // DASTTestMonitoring [label="3. DAST Test\nMonitoring\nCheck DAST Status API"];
-    ReportPreparation [label="DAST Start\nInitiate Report Preparation"];
+    ReportPreparation [label="Initiate Report Preparation"];
     ReportComplete [shape=diamond label="Check\nReport status"];
     ReportDownload [label="Download DAST Reports"];
     Done [label="Done"];
